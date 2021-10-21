@@ -12,21 +12,20 @@
 */
 
 //Importaciones
-import {Dado} from 'dado.js';
+import {Dado} from './dado.js';
 
 class App{
     constructor(){
         this.dados = [];
-        this.resultado = 0;
+        this.resultado;
     }
     anadirDado(){
-        this.dados.push(new Dado(document.getElementById('caras'), document.getElementById('minimo'), document.getElementById('paso')));
+        this.dados.push(new Dado(document.getElementById('caras').value, document.getElementById('minimo').value, document.getElementById('paso').value));
+        console.log('El dado ha sido añadido correctamente');
     }
     tirar(){
-        for(let i = 0; i < this.dado.length; i++)
-            this.resultado += this.dados[i].tirarDados();
+        this.resultado = Dado.tirarDados(this.dados);
         document.getElementById('resultado').innerHTML = this.resultado;
     }
 }
-
-new App();
+window.app = new App();

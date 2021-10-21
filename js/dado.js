@@ -13,11 +13,26 @@
 
 export class Dado{
     constructor(caras, minimo, paso){
-        this.caras = caras;
-        this.minimo = minimo;
-        this.paso = paso;
+        this.caras = parseInt(caras);
+        this.minimo = parseInt(minimo);
+        this.paso = parseInt(paso);
     }
-    static tirarDados(){
+    /**
+     * Realiza la tirada del dado.
+     * @return {Number} Número entero con el resultado de la tirada.
+     */
+    tirar(){
         return Math.floor(Math.random() * this.caras) * this.paso + this.minimo;
+    }
+    /**
+     * Realiza una tirada de daddos
+     * @param dados {[Dado]} Array de objetos Dado.
+     * @return {Number} Número entero con el resultado de la tirada.
+     */
+    static tirarDados(dados){
+        let resultado = 0;
+        for(let i = 0; i<dados.length; i++)
+            resultado += dados[i].tirar();
+        return resultado;
     }
 }
